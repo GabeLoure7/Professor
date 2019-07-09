@@ -1,7 +1,4 @@
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import modelo.Professor;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +6,18 @@ import modelo.Professor;
  */
 package dao;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import modelo.Professor;
+
 /**
  *
  * @author Administrador
  */
 public class ProfessorDao {
- public static boolean inserir(Professor objeto) {
+
+    public static boolean inserir(Professor objeto) {
         String sql = "INSERT INTO Professor (nome, sobrenome, endereco) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
@@ -27,12 +30,14 @@ public class ProfessorDao {
             System.out.println(ex.getMessage());
             return false;
         }
-        public static void main(String[] args) {
+    }
+
+    public static void main(String[] args) {
         Professor objeto = new Professor();
         objeto.setNome("BR");
         objeto.setSobrenome("Brasil");
         objeto.setEndereco("BR");
-        
+
         boolean resultado = inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
@@ -40,6 +45,5 @@ public class ProfessorDao {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
     }
-    }   
 }
 
